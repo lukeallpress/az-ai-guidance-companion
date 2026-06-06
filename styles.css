@@ -255,6 +255,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 26px 18px 60px; }
 /* ---------- FOOTER ---------- */
 .foot { max-width: var(--max); margin: 0 auto; padding: 22px 18px 40px; color: var(--muted); font-size: .86rem; border-top: 1px solid var(--line); }
 .foot a { color: var(--blue); }
+/* official AIEE lockup (white-bg JPEG) — multiply drops the white box on light footers */
+.foot-logo { height: 42px; width: auto; max-width: 260px; display: block; margin: 0 0 12px; mix-blend-mode: multiply; }
 .empty { text-align: center; color: var(--muted); padding: 30px; background: #fff; border: 1px dashed var(--line); border-radius: var(--radius); }
 .hidden { display: none !important; }
 

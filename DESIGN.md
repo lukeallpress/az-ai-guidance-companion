@@ -42,7 +42,8 @@ into flat images, and the two illustrations ship as editable SVG.
 - **Framework cards / circular icons** — used for 3-part frameworks (Imperative/Practice/Redesign; the "boat" sections). Swap in real icons as desired.
 
 ## Illustrations (editable, replaceable)
-- `assets/aiee-logo.svg` — **placeholder** pyramid mark (gray/navy/gold). Replace with the official AIEE + NAU lockup.
+- `assets/aiee-mark.png` — **official** AIEE pyramid mark (transparent PNG). Used on navy headers (hero, embed bar). Low resolution (124×89) — keep it small (≤ ~44px tall) so it stays crisp.
+- `assets/aiee-logo-full.png` — **official** full AIEE + NAU lockup (white-background JPEG, 397×127). Used on light footers via `mix-blend-mode: multiply` so the white box disappears. Keep ≤ ~260px wide; swap in a vector version if one becomes available.
 - `assets/arizona-constellation.svg` — stylized Arizona network from the cover. Recolor via the `--teal` family.
 
 ## Accessibility
