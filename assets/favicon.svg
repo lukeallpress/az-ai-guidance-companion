@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AIEE">
+  <rect x="2" y="2" width="60" height="60" rx="13" fill="#ffffff" stroke="#002454" stroke-opacity="0.12" stroke-width="2"/>
+  <defs><clipPath id="t"><polygon points="32,12 54,52 10,52"/></clipPath></defs>
+  <g clip-path="url(#t)">
+    <rect x="6" y="12"   width="52" height="13.5" fill="#b9c0c7"/>
+    <rect x="6" y="25.5" width="52" height="13"   fill="#002454"/>
+    <rect x="6" y="38.5" width="52" height="13.5" fill="#febe10"/>
+  </g>
+</svg>
