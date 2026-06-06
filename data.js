@@ -29,17 +29,19 @@ window.AZ_DATA = {
       { figure: "8", label: "ethical considerations (up from 5)" },
       { figure: "7", label: "role-based reading routes" }
     ],
-    // Per-role overview media. Paste a YouTube / Google Drive / audio URL to enable;
-    // leave blank to show a "coming soon" note (or set mediaPlaceholder:false to hide).
+    // Per-role overview media. Paste a YouTube / Google Drive / audio URL per role.
+    // NOTE: these are innocuous SAMPLE clips so the player design shows in the demo —
+    // replace each with the real role overview, and clear mediaDemoNote, when ready.
     mediaPlaceholder: true,
+    mediaDemoNote: "Sample clip for layout — the real role overview will go here.",
     media: {
-      superintendent: { videoUrl: "", podcastUrl: "", min: "5" },
-      curriculum:     { videoUrl: "", podcastUrl: "", min: "6" },
-      edtech:         { videoUrl: "", podcastUrl: "", min: "6" },
-      it:             { videoUrl: "", podcastUrl: "", min: "5" },
-      principal:      { videoUrl: "", podcastUrl: "", min: "5" },
-      operations:     { videoUrl: "", podcastUrl: "", min: "4" },
-      teachers:       { videoUrl: "", podcastUrl: "", min: "5" }
+      superintendent: { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "5" },
+      curriculum:     { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "6" },
+      edtech:         { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "6" },
+      it:             { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "5" },
+      principal:      { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "5" },
+      operations:     { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "4" },
+      teachers:       { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "5" }
     },
     // Optional usage analytics (Supabase). Fill both to enable; blank = disabled (no-op).
     analytics: { supabaseUrl: "", supabaseAnonKey: "", table: "events" }

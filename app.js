@@ -25,7 +25,8 @@
     var h = '<div class="media-block"><div class="media-head"><b>Short on time?</b> Watch or listen instead of reading.</div><div class="media-btns">';
     if (hasV) h += '<button type="button" class="media-btn" data-media="video" data-role="' + r.id + '">▶ Watch overview' + (m.min ? " · " + esc(m.min) + " min" : "") + "</button>";
     if (hasP) h += '<button type="button" class="media-btn" data-media="podcast" data-role="' + r.id + '">🎧 Listen' + (m.min ? " · " + esc(m.min) + " min" : "") + "</button>";
-    return h + '</div><div class="media-embed" id="media-embed-' + r.id + '" hidden></div></div>';
+    var note = D.meta.mediaDemoNote ? '<div class="media-note">' + esc(D.meta.mediaDemoNote) + '</div>' : '';
+    return h + '</div>' + note + '<div class="media-embed" id="media-embed-' + r.id + '" hidden></div></div>';
   }
   function toEmbed(url) {
     var u = String(url).trim();
