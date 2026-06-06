@@ -59,7 +59,7 @@
       err.setAttribute("hidden", ""); btn.disabled = true; btn.textContent = "Checking…";
       verify(pw).then(function (ok) {
         btn.disabled = false; btn.textContent = "Enter";
-        if (ok) { try { sessionStorage.setItem(SS_PW, pw); } catch (_) {} unlock(); }
+        if (ok) { try { sessionStorage.setItem(SS_PW, pw); } catch (_) {} unlock(); window.AZtrack && window.AZtrack("unlock"); }
         else { err.removeAttribute("hidden"); $("#gate-pw").select(); }
       });
     });
@@ -199,7 +199,9 @@
     document.addEventListener("click", function (e) {
       var b = e.target.closest && e.target.closest(".pagepill[data-page]");
       if (!b) return; e.preventDefault();
-      window.openReader(+b.getAttribute("data-page"));
+      var pg = +b.getAttribute("data-page");
+      window.AZtrack && window.AZtrack("page", { page: pg });
+      window.openReader(pg);
     });
   }
 

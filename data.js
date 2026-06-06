@@ -28,7 +28,21 @@ window.AZ_DATA = {
       { figure: "41", label: "pages in the new guidance" },
       { figure: "8", label: "ethical considerations (up from 5)" },
       { figure: "7", label: "role-based reading routes" }
-    ]
+    ],
+    // Per-role overview media. Paste a YouTube / Google Drive / audio URL to enable;
+    // leave blank to show a "coming soon" note (or set mediaPlaceholder:false to hide).
+    mediaPlaceholder: true,
+    media: {
+      superintendent: { videoUrl: "", podcastUrl: "", min: "5" },
+      curriculum:     { videoUrl: "", podcastUrl: "", min: "6" },
+      edtech:         { videoUrl: "", podcastUrl: "", min: "6" },
+      it:             { videoUrl: "", podcastUrl: "", min: "5" },
+      principal:      { videoUrl: "", podcastUrl: "", min: "5" },
+      operations:     { videoUrl: "", podcastUrl: "", min: "4" },
+      teachers:       { videoUrl: "", podcastUrl: "", min: "5" }
+    },
+    // Optional usage analytics (Supabase). Fill both to enable; blank = disabled (no-op).
+    analytics: { supabaseUrl: "", supabaseAnonKey: "", table: "events" }
   },
 
   // Authentic voices pulled from the guidance — used as design callouts.
@@ -97,7 +111,7 @@ window.AZ_DATA = {
       role: "Superintendent & Cabinet",
       short: "Superintendent",
       audience: "System leaders setting direction and public tone",
-      time: "25–35 min",
+      time: "12–18 min",
       priority: "District vision, public trust, and implementation momentum",
       readFirst: [
         { label: "Introduction & Orientation", pages: "6" },
@@ -117,7 +131,7 @@ window.AZ_DATA = {
       role: "Curriculum & Instruction",
       short: "Curriculum",
       audience: "Teaching & learning leaders, standards and assessment",
-      time: "40–50 min",
+      time: "20–25 min",
       priority: "AI literacy, instructional design, assessment, and academic integrity",
       readFirst: [
         { label: "Understanding GenAI", pages: "8–9" },
@@ -136,7 +150,7 @@ window.AZ_DATA = {
       role: "EdTech & Instructional Coaches",
       short: "EdTech",
       audience: "Instructional technologists and coaches supporting teachers",
-      time: "45–60 min",
+      time: "22–30 min",
       priority: "Practical adoption, teacher support, approved tools, and PD",
       readFirst: [
         { label: "Understanding GenAI", pages: "8–9" },
@@ -155,7 +169,7 @@ window.AZ_DATA = {
       role: "IT, Cybersecurity & Data Privacy",
       short: "IT / Security",
       audience: "CTOs, IT, security, and data-privacy leads",
-      time: "30–45 min",
+      time: "15–22 min",
       priority: "Data protection, cybersecurity, vendor review, and agentic risk",
       readFirst: [
         { label: "Understanding GenAI (esp. agentic AI)", pages: "8–9" },
@@ -175,7 +189,7 @@ window.AZ_DATA = {
       role: "Principal & Site Administrator",
       short: "Principal",
       audience: "Building leaders setting school-level expectations",
-      time: "30–40 min",
+      time: "15–20 min",
       priority: "School norms, staff clarity, classroom use, and family trust",
       readFirst: [
         { label: "Introduction & Orientation", pages: "6" },
@@ -195,7 +209,7 @@ window.AZ_DATA = {
       role: "Operations, HR & Finance",
       short: "Operations",
       audience: "HR, finance, operations, communications, facilities",
-      time: "20–30 min",
+      time: "10–15 min",
       priority: "Workflow enhancement, multilingual communication, and human oversight",
       readFirst: [
         { label: "Understanding GenAI", pages: "8–9" },
@@ -214,7 +228,7 @@ window.AZ_DATA = {
       role: "Teachers",
       short: "Teachers",
       audience: "Classroom educators",
-      time: "30–45 min",
+      time: "15–22 min",
       priority: "Instructional practice, student agency, and responsible use",
       readFirst: [
         { label: "Teacher Use Cases", pages: "24" },

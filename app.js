@@ -13,6 +13,31 @@
       '" title="Read this in the guidance (p. ' + esc(pages) + ')">' + esc(pages) + '</button>';
   }
 
+  // "Short on time? Watch / Listen" block for a role (media URLs come from data.js meta.media).
+  function mediaBlock(r) {
+    var m = (D.meta.media && D.meta.media[r.id]) || {};
+    var hasV = !!m.videoUrl, hasP = !!m.podcastUrl;
+    if (!hasV && !hasP) {
+      if (!D.meta.mediaPlaceholder) return "";
+      return '<div class="media-block media-soon"><b>Short on time?</b> A ' + esc(m.min || "5") +
+        '-min video &amp; podcast overview for this role is coming soon — for now, the page-numbered route below is the fast path.</div>';
+    }
+    var h = '<div class="media-block"><div class="media-head"><b>Short on time?</b> Watch or listen instead of reading.</div><div class="media-btns">';
+    if (hasV) h += '<button type="button" class="media-btn" data-media="video" data-role="' + r.id + '">▶ Watch overview' + (m.min ? " · " + esc(m.min) + " min" : "") + "</button>";
+    if (hasP) h += '<button type="button" class="media-btn" data-media="podcast" data-role="' + r.id + '">🎧 Listen' + (m.min ? " · " + esc(m.min) + " min" : "") + "</button>";
+    return h + '</div><div class="media-embed" id="media-embed-' + r.id + '" hidden></div></div>';
+  }
+  function toEmbed(url) {
+    var u = String(url).trim();
+    var yt = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+    if (yt) return '<iframe class="embed-frame" src="https://www.youtube.com/embed/' + yt[1] + '" title="Overview video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    var gd = u.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+    if (gd) return '<iframe class="embed-frame" src="https://drive.google.com/file/d/' + gd[1] + '/preview" title="Overview" allow="autoplay" allowfullscreen></iframe>';
+    if (/\.(mp3|m4a|aac|wav|ogg)(\?|$)/i.test(u)) return '<audio controls preload="none" style="width:100%" src="' + esc(u) + '"></audio>';
+    if (/\.(mp4|webm|mov)(\?|$)/i.test(u)) return '<video controls preload="none" style="width:100%" src="' + esc(u) + '"></video>';
+    return '<iframe class="embed-frame" src="' + esc(u) + '" title="Overview" allowfullscreen></iframe>';
+  }
+
   // compact chrome automatically when embedded in an iframe (e.g. Google Sites)
   try { if (window.self !== window.top) document.body.classList.add('embed'); } catch (_) { document.body.classList.add('embed'); }
 
@@ -55,6 +80,7 @@
           '<span class="chip">Focus: ' + esc(r.priority) + '</span></div>' +
       '</div>' +
       '<div class="role-body">' +
+        mediaBlock(r) +
         '<div class="route-cols">' +
           '<div class="route-col route-col--first"><h4><span class="dot"></span>Read first</h4>' + routeList(r.readFirst) + '</div>' +
           '<div class="route-col route-col--next"><h4><span class="dot"></span>Read next, if you have time</h4>' + routeList(r.readNext) + '</div>' +
@@ -70,6 +96,7 @@
     var id = b.getAttribute('data-role');
     renderRole(id);
     try { history.replaceState(null, '', '#role=' + id); } catch (_) {}
+    window.AZtrack && window.AZtrack('role', { role: id });
   });
 
   /* ---------------- WHAT CHANGED ---------------- */
@@ -148,10 +175,24 @@
     }
   });
 
+  // media play (Watch / Listen)
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.media-btn'); if (!b) return;
+    var role = b.getAttribute('data-role'), type = b.getAttribute('data-media');
+    var m = (D.meta.media && D.meta.media[role]) || {};
+    var url = type === 'video' ? m.videoUrl : m.podcastUrl;
+    var box = document.getElementById('media-embed-' + role);
+    if (!box || !url) return;
+    box.innerHTML = toEmbed(url); box.hidden = false;
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    window.AZtrack && window.AZtrack('media', { role: role, type: type });
+  });
+
   /* ---------------- TABS ---------------- */
   function setTab(name) {
     $all('.tab').forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-tab') === name); });
     $all('.panel').forEach(function (p) { var on = p.id === name; p.classList.toggle('is-active', on); p.hidden = !on; });
+    window.AZtrack && window.AZtrack('tab', { tab: name });
   }
   $all('.tab').forEach(function (t) { t.addEventListener('click', function () { setTab(t.getAttribute('data-tab')); }); });
   $all('[data-go]').forEach(function (b) {
