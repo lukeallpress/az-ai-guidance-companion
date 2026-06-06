@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 560" role="img" aria-label="Arizona shown as a connected network of nodes">
+  <title>Arizona as a connected network</title>
+  <desc>An outline of Arizona filled with glowing nodes and connecting lines, echoing the guidance cover. Decorative.</desc>
+  <defs>
+    <radialGradient id="node" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9fe6f4"/>
+      <stop offset="100%" stop-color="#54c7ec"/>
+    </radialGradient>
+  </defs>
+  <!-- AZ outline (stylized): rectangle with the SW corner cut by the Colorado River diagonal -->
+  <path d="M60,46 L540,46 L540,470 L250,470 L60,320 Z"
+        fill="none" stroke="#54c7ec" stroke-width="2.5" opacity="0.55"/>
+  <!-- network links -->
+  <g stroke="#54c7ec" stroke-width="1.4" opacity="0.45" fill="none">
+    <path d="M140,120 L250,96 L380,150 L470,110"/>
+    <path d="M140,120 L300,210 L250,96"/>
+    <path d="M380,150 L430,250 L470,360"/>
+    <path d="M300,210 L350,330 L240,380"/>
+    <path d="M180,260 L150,300 L240,380"/>
+    <path d="M300,210 L180,260"/>
+    <path d="M350,330 L380,430"/>
+    <path d="M430,250 L350,330"/>
+    <path d="M470,110 L430,250"/>
+  </g>
+  <!-- nodes -->
+  <g fill="url(#node)">
+    <circle cx="140" cy="120" r="6"/><circle cx="250" cy="96" r="7"/>
+    <circle cx="380" cy="150" r="6"/><circle cx="470" cy="110" r="5"/>
+    <circle cx="300" cy="210" r="8"/><circle cx="180" cy="260" r="5"/>
+    <circle cx="430" cy="250" r="6"/><circle cx="350" cy="330" r="7"/>
+    <circle cx="240" cy="380" r="6"/><circle cx="470" cy="360" r="5"/>
+    <circle cx="150" cy="300" r="4"/><circle cx="380" cy="430" r="5"/>
+  </g>
+  <!-- faint scatter dots -->
+  <g fill="#9fe6f4" opacity="0.5">
+    <circle cx="210" cy="160" r="2"/><circle cx="330" cy="120" r="2"/>
+    <circle cx="420" cy="190" r="2"/><circle cx="280" cy="300" r="2"/>
+    <circle cx="200" cy="340" r="2"/><circle cx="400" cy="360" r="2"/>
+    <circle cx="330" cy="250" r="2"/><circle cx="120" cy="220" r="2"/>
+  </g>
+</svg>

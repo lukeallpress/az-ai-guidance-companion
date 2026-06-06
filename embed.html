@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AZ GenAI Guidance 2026 — reading routes (embed)</title>
+  <meta name="description" content="Embeddable companion to Arizona's 2026 GenAI K-12 guidance: role reading routes and what changed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Vollkorn:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Compact header for iframe embedding (Google Sites). */
+    .ebar { background: linear-gradient(135deg, var(--navy), var(--navy-deep)); color:#fff; padding: 12px 18px; display:flex; align-items:center; gap:12px; }
+    .ebar img { width: 30px; }
+    .ebar b { font-family: var(--font-display); font-weight: 900; font-size: 1rem; line-height: 1.1; }
+    .ebar .tag { font-family: var(--font-serif); font-style: italic; color: var(--gold); font-size: .92rem; }
+    .ebar a { margin-left: auto; }
+    .ebar .btn--gold { min-height: 36px; padding: 8px 12px; font-size: .85rem; }
+    main { padding-top: 18px; }
+  </style>
+</head>
+<body class="embed">
+  <header class="ebar">
+    <img src="assets/aiee-logo.svg" alt="Arizona Institute for Education and the Economy">
+    <div>
+      <b>Arizona GenAI Guidance · 2026</b>
+      <span class="tag">A Call for AI Literacy</span>
+    </div>
+    <a class="btn btn--gold" id="open-guidance" href="#" target="_blank" rel="noopener">Open the full guidance ↗</a>
+  </header>
+
+  <nav class="nav" aria-label="Sections">
+    <div class="nav__inner">
+      <div class="tabs" role="tablist" aria-label="Companion modes">
+        <button class="tab" role="tab" id="tab-routes"  aria-controls="routes"  data-tab="routes"  aria-selected="true">Reading routes</button>
+        <button class="tab" role="tab" id="tab-changes" aria-controls="changes" data-tab="changes" aria-selected="false">What changed</button>
+        <button class="tab" role="tab" id="tab-explore" aria-controls="explore" data-tab="explore" aria-selected="false">Explore sections</button>
+        <button class="tab" role="tab" id="tab-share"   aria-controls="share"   data-tab="share"   aria-selected="false">Share kit</button>
+      </div>
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="search" type="search" placeholder="Search chapters &amp; sections…" aria-label="Search chapters and sections">
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="panel is-active" id="routes" role="tabpanel" aria-labelledby="tab-routes">
+      <div class="panel-head"><h2>Your role, your reading route</h2><p>Choose a role for a short “read first / read next” list with page numbers.</p></div>
+      <div class="starthere" id="starthere"></div>
+      <div class="routes">
+        <div class="rolemenu" id="rolemenu" role="tablist" aria-label="Roles"></div>
+        <div class="roledetail" id="roledetail" aria-live="polite"></div>
+      </div>
+    </section>
+    <section class="panel" id="changes" role="tabpanel" aria-labelledby="tab-changes" hidden>
+      <div class="panel-head"><h2>What changed in 2026</h2><p>The big shifts from “A Balanced Perspective” to “A Call for AI Literacy.”</p></div>
+      <div class="filterbar" id="changefilters"></div>
+      <div class="change-grid" id="changegrid"></div>
+    </section>
+    <section class="panel" id="explore" role="tabpanel" aria-labelledby="tab-explore" hidden>
+      <div class="panel-head"><h2>Explore every section</h2><p>The full v26.01 structure with verified page numbers.</p></div>
+      <div id="explorelist"></div>
+    </section>
+    <section class="panel" id="share" role="tabpanel" aria-labelledby="tab-share" hidden>
+      <div class="panel-head"><h2>Share it with your team</h2><p>A general announcement plus a ready-to-send teaser per role.</p></div>
+      <div class="announce" id="announce"></div>
+      <div class="share-grid" id="sharegrid"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Page numbers reference v26.01. Read the live document at
+      <a id="foot-link" href="#" target="_blank" rel="noopener">azk12.ai</a>.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

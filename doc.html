@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AZ GenAI Guidance 2026 — What Changed & Reading Routes (one-pager)</title>
+  <meta name="description" content="A printable companion to Arizona's 2026 GenAI K-12 guidance: what changed, plus role-based reading routes with page numbers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Vollkorn:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Document-specific layout (shares tokens from styles.css). */
+    body { background: #e9eef3; }
+    .doc { max-width: 940px; margin: 22px auto; background: #fff; box-shadow: var(--shadow); }
+    .doc-cover { position: relative; overflow: hidden; color: #fff; padding: 40px 44px 34px;
+      background: radial-gradient(760px 360px at 90% -20%, rgba(84,199,236,.22), transparent 60%), linear-gradient(150deg, var(--navy), var(--navy-deep) 80%); }
+    .doc-cover img { position: absolute; top: -20px; right: -30px; width: 360px; opacity: .8; }
+    .doc-cover .kicker { display:inline-block; background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.24); color:#eaf4fb; font-weight:700; font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; padding:6px 11px; border-radius:999px; }
+    .doc-cover h1 { position: relative; font-size: 2.5rem; font-weight: 900; line-height: 1.03; margin: 14px 0 4px; max-width: 18ch; }
+    .doc-cover .sub { color:#dbeaf6; margin: 0 0 6px; font-size: 1.05rem; }
+    .doc-cover .tag { font-family: var(--font-serif); font-style: italic; color: var(--gold); font-size: 1.5rem; margin: 0 0 14px; }
+    .doc-cover .what { position: relative; color:#eaf4fb; max-width: 60ch; margin: 0; }
+    .doc-cover a { color: var(--gold); font-weight: 700; }
+    .doc-body { padding: 28px 44px 40px; }
+    .doc h2 { color: var(--navy); font-size: 1.5rem; margin: 6px 0 4px; }
+    .doc h2 + .lead { color: var(--muted); margin: 0 0 18px; }
+    .rule { height: 4px; width: 60px; background: var(--gold); border-radius: 4px; margin: 0 0 16px; }
+    .doc-section { margin: 0 0 34px; }
+    .changes2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .c2 { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 13px 15px; break-inside: avoid; }
+    .c2 .meta { display: flex; gap: 8px; align-items: center; margin-bottom: 7px; flex-wrap: wrap; }
+    .c2 h3 { margin: 0 0 5px; color: var(--navy); font-size: 1.02rem; }
+    .c2 p { margin: 0; font-size: .9rem; color: var(--ink); }
+    .c2 .why { margin-top: 7px; font-size: .82rem; color: var(--muted); }
+    .doc-role { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 0 0 14px; break-inside: avoid; }
+    .doc-role .rhead { background: linear-gradient(135deg, var(--navy), var(--navy-soft)); color: #fff; padding: 13px 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .doc-role .rhead h3 { margin: 0; font-size: 1.18rem; font-weight: 900; }
+    .doc-role .rhead .t { color: var(--gold); font-weight: 800; font-size: .85rem; white-space: nowrap; }
+    .doc-role .rbody { padding: 14px 18px 16px; }
+    .doc-role .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .doc-role h4 { margin: 0 0 7px; color: var(--navy); font-size: .95rem; display:flex; align-items:center; gap:7px; }
+    .doc-role h4 .dot{ width:10px;height:10px;border-radius:50%; }
+    .first .dot{ background: var(--gold);} .next .dot{ background: var(--teal);}
+    .doc-role ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+    .doc-role li { font-size: .88rem; display:flex; justify-content:space-between; gap:10px; border-bottom:1px dotted var(--line); padding-bottom:5px; }
+    .doc-role li .pp { color: var(--navy); font-weight: 800; white-space: nowrap; }
+    .doc-role .pr { margin: 12px 0 0; font-family: var(--font-serif); font-style: italic; color: var(--navy); border-left: 4px solid var(--gold); padding-left: 12px; font-size: .95rem; }
+    .doc-foot { border-top: 1px solid var(--line); padding: 16px 44px 30px; color: var(--muted); font-size: .85rem; }
+    .doc-foot a { color: var(--blue); }
+    @media (max-width: 720px){ .changes2, .doc-role .cols { grid-template-columns: 1fr; } .doc-cover, .doc-body, .doc-foot { padding-left: 22px; padding-right: 22px; } }
+    @media print {
+      @page { size: Letter; margin: 0.5in; }
+      html, body { background: #fff; }
+      .doc { margin: 0; max-width: none; box-shadow: none; }
+      .doc-cover, .doc-role .rhead, .pagepill, .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .doc-section--routes { break-before: page; }
+      /* CSS grid/multicol don't fragment reliably across print pages; single-column flows cleanly. */
+      .changes2 { display: block; }
+      .c2 { margin: 0 0 9px; padding: 11px 14px; }
+      .doc-role, .c2 { break-inside: avoid; }
+      .doc-role .cols { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body class="doc-page">
+  <article class="doc">
+    <header class="doc-cover">
+      <img src="assets/arizona-constellation.svg" alt="">
+      <span class="kicker">Version 26.01 · June 2026 · a full rewrite</span>
+      <h1>Generative AI in K-12 Education</h1>
+      <p class="sub">Guidance for Arizona Schools and School Systems</p>
+      <p class="tag">A Call for AI Literacy</p>
+      <p class="what">A companion one-pager: <b>what changed</b> in the 2026 rewrite, plus a <b>role-based reading route</b> for each leader. Page numbers reference v26.01 — read the full document at <a id="cover-link" href="#" target="_blank" rel="noopener">azk12.ai</a>.</p>
+    </header>
+
+    <div class="doc-body">
+      <section class="doc-section">
+        <h2>What changed in 2026</h2>
+        <div class="rule"></div>
+        <p class="lead">From “A Balanced Perspective” to “A Call for AI Literacy” — the ten shifts that matter most.</p>
+        <div class="changes2" id="d-changes"></div>
+      </section>
+
+      <section class="doc-section doc-section--routes">
+        <h2>Your reading route, by role</h2>
+        <div class="rule"></div>
+        <p class="lead">Everyone starts the same place — Introduction (p. 6) and Understanding GenAI (pp. 8–9) — then follows their route.</p>
+        <div id="d-roles"></div>
+      </section>
+    </div>
+
+    <footer class="doc-foot" id="d-foot"></footer>
+  </article>
+
+  <script src="data.js"></script>
+  <script>
+    (function () {
+      var D = window.AZ_DATA, PDF = D.meta.pdfUrl;
+      function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+      document.getElementById('cover-link').href = PDF;
+
+      document.getElementById('d-changes').innerHTML = D.changes.map(function(c){
+        return '<div class="c2"><div class="meta"><span class="badge badge--tag">'+esc(c.tag)+'</span>'+
+          '<a class="pagepill" href="'+PDF+'" target="_blank" rel="noopener">'+esc(c.pages)+'</a></div>'+
+          '<h3>'+esc(c.title)+'</h3><p>'+esc(c.body)+'</p>'+
+          '<p class="why"><b>Why:</b> '+esc(c.why)+'</p></div>';
+      }).join('');
+
+      function steps(items){ return '<ul>'+items.map(function(it){
+        return '<li><span>'+esc(it.label)+'</span><span class="pp">p. '+esc(it.pages)+'</span></li>'; }).join('')+'</ul>'; }
+
+      document.getElementById('d-roles').innerHTML = D.roles.map(function(r){
+        return '<div class="doc-role"><div class="rhead"><h3>'+esc(r.role)+'</h3><span class="t">'+esc(r.time)+' · '+esc(r.priority)+'</span></div>'+
+          '<div class="rbody"><div class="cols">'+
+            '<div class="first"><h4><span class="dot"></span>Read first</h4>'+steps(r.readFirst)+'</div>'+
+            '<div class="next"><h4><span class="dot"></span>Read next, if time</h4>'+steps(r.readNext)+'</div>'+
+          '</div><p class="pr">“'+esc(r.prompt)+'”</p></div></div>';
+      }).join('');
+
+      document.getElementById('d-foot').innerHTML =
+        'An unofficial reading guide to Arizona’s 2026 GenAI guidance (v26.01), '+esc(D.meta.pages)+' pages. '+
+        'Page numbers reference that edition; always read the live document at '+
+        '<a href="'+PDF+'" target="_blank" rel="noopener">azk12.ai</a>. Produced by the Arizona Institute for Education &amp; the Economy companion project · '+esc(D.meta.versionDate)+'.';
+    })();
+  </script>
+</body>
+</html>

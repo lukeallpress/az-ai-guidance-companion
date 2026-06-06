@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AZ GenAI Guidance 2026 — What Changed & Your Reading Route</title>
+  <meta name="description" content="A 5-minute companion to Arizona's 2026 GenAI K-12 guidance: pick your role for a short, page-numbered reading route, or see what changed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Vollkorn:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <img class="hero__bg" src="assets/arizona-constellation.svg" alt="">
+    <div class="hero__inner">
+      <div class="brand">
+        <img src="assets/aiee-logo.svg" alt="Arizona Institute for Education & the Economy">
+        <div>
+          <b>Arizona GenAI Guidance · 2026</b>
+          <span>Arizona Institute for Education &amp; the Economy · NAU</span>
+        </div>
+      </div>
+
+      <div class="hero__lead">
+        <div>
+          <span class="kicker">Version 26.01 · June 2026 · a full rewrite</span>
+          <h1>Generative AI in K-12 Education</h1>
+          <p class="subtitle">Guidance for Arizona Schools and School Systems</p>
+          <p class="tagline">A Call for AI Literacy</p>
+          <p class="lede">No one needs to read 41 pages cover to cover. Pick your role for a short,
+            page-numbered reading route — or scan what changed since the last edition.</p>
+          <div class="hero-actions">
+            <button class="btn btn--gold" data-go="routes">Find your reading route</button>
+            <a class="btn btn--ghost" id="open-guidance" href="#" target="_blank" rel="noopener">Open the full guidance ↗</a>
+          </div>
+        </div>
+        <div class="stats" id="stats" aria-label="At a glance"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav" aria-label="Sections">
+    <div class="nav__inner">
+      <div class="tabs" role="tablist" aria-label="Companion modes">
+        <button class="tab" role="tab" id="tab-routes"  aria-controls="routes"  data-tab="routes"  aria-selected="true">Reading routes</button>
+        <button class="tab" role="tab" id="tab-changes" aria-controls="changes" data-tab="changes" aria-selected="false">What changed</button>
+        <button class="tab" role="tab" id="tab-explore" aria-controls="explore" data-tab="explore" aria-selected="false">Explore sections</button>
+        <button class="tab" role="tab" id="tab-share"   aria-controls="share"   data-tab="share"   aria-selected="false">Share kit</button>
+      </div>
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="search" type="search" placeholder="Search chapters &amp; sections…" aria-label="Search chapters and sections">
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- READING ROUTES -->
+    <section class="panel is-active" id="routes" role="tabpanel" aria-labelledby="tab-routes">
+      <div class="panel-head">
+        <h2>Your role, your reading route</h2>
+        <p>Choose a role to get a short “read first / read next” list with page numbers. Everyone starts in the same place.</p>
+      </div>
+      <div class="starthere" id="starthere"></div>
+      <div class="routes">
+        <div class="rolemenu" id="rolemenu" role="tablist" aria-label="Roles"></div>
+        <div class="roledetail" id="roledetail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- WHAT CHANGED -->
+    <section class="panel" id="changes" role="tabpanel" aria-labelledby="tab-changes" hidden>
+      <div class="panel-head">
+        <h2>What changed in 2026</h2>
+        <p>The big shifts from “A Balanced Perspective” to “A Call for AI Literacy.” Filter by theme.</p>
+      </div>
+      <div class="filterbar" id="changefilters"></div>
+      <div class="change-grid" id="changegrid"></div>
+    </section>
+
+    <!-- EXPLORE SECTIONS -->
+    <section class="panel" id="explore" role="tabpanel" aria-labelledby="tab-explore" hidden>
+      <div class="panel-head">
+        <h2>Explore every section</h2>
+        <p>The full v26.01 structure with verified page numbers. New or expanded sections are flagged.</p>
+      </div>
+      <div id="explorelist"></div>
+    </section>
+
+    <!-- SHARE KIT -->
+    <section class="panel" id="share" role="tabpanel" aria-labelledby="tab-share" hidden>
+      <div class="panel-head">
+        <h2>Share it with your team</h2>
+        <p>A general announcement plus a ready-to-send teaser for each role. Copy, paste, send.</p>
+      </div>
+      <div class="announce" id="announce"></div>
+      <div class="share-grid" id="sharegrid"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><b>About this companion.</b> An unofficial reading guide to Arizona’s 2026 GenAI guidance
+      (v26.01). Page numbers reference that edition; always read the live document at
+      <a id="foot-link" href="#" target="_blank" rel="noopener">azk12.ai</a>. Built to be re-styled —
+      see <code>DESIGN.md</code>.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
