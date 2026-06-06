@@ -19,21 +19,36 @@
     .ebar .btn--gold { min-height: 36px; padding: 8px 12px; font-size: .85rem; }
     main { padding-top: 18px; }
   </style>
+  <script>try{if(sessionStorage.getItem('az_unlocked_v1')==='1'){document.documentElement.classList.add('unlocked');}}catch(e){}</script>
 </head>
 <body class="embed">
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <img src="assets/aiee-mark.png" alt="">
+      <h2>Working draft</h2>
+      <p>This companion references an unpublished draft of the guidance. Enter the access word to continue.</p>
+      <form id="gate-form" autocomplete="off">
+        <input id="gate-pw" type="password" autocomplete="off" placeholder="Access word" aria-label="Access word">
+        <button class="btn btn--gold" type="submit">Enter</button>
+      </form>
+      <p class="gate-err" id="gate-err" hidden>That word didn’t work — try again.</p>
+      <p class="gate-note">Shared in confidence — please don’t forward the link.</p>
+    </div>
+  </div>
   <header class="ebar">
     <img src="assets/aiee-mark.png" alt="Arizona Institute for Education and the Economy">
     <div>
       <b>Arizona GenAI Guidance · 2026</b>
       <span class="tag">A Call for AI Literacy</span>
     </div>
-    <a class="btn btn--gold" id="open-guidance" href="#" target="_blank" rel="noopener">Open the full guidance ↗</a>
+    <button class="btn btn--gold" data-go="read">Read the guidance</button>
   </header>
 
   <nav class="nav" aria-label="Sections">
     <div class="nav__inner">
       <div class="tabs" role="tablist" aria-label="Companion modes">
         <button class="tab" role="tab" id="tab-routes"  aria-controls="routes"  data-tab="routes"  aria-selected="true">Reading routes</button>
+        <button class="tab" role="tab" id="tab-read"    aria-controls="read"    data-tab="read"    aria-selected="false">Read the guidance</button>
         <button class="tab" role="tab" id="tab-changes" aria-controls="changes" data-tab="changes" aria-selected="false">What changed</button>
         <button class="tab" role="tab" id="tab-explore" aria-controls="explore" data-tab="explore" aria-selected="false">Explore sections</button>
         <button class="tab" role="tab" id="tab-share"   aria-controls="share"   data-tab="share"   aria-selected="false">Share kit</button>
@@ -53,6 +68,15 @@
         <div class="rolemenu" id="rolemenu" role="tablist" aria-label="Roles"></div>
         <div class="roledetail" id="roledetail" aria-live="polite"></div>
       </div>
+    </section>
+    <section class="panel" id="read" role="tabpanel" aria-labelledby="tab-read" hidden>
+      <div class="panel-head"><h2>Read the guidance</h2><p>Your role’s recommended pages are open; the rest collapse — tap a strip to expand. Page links jump you here.</p></div>
+      <div class="reader-toolbar">
+        <label class="reader-rolepick">Reading as <select id="reader-role" aria-label="Role for recommended pages"></select></label>
+        <button type="button" id="reader-expand" class="mini-btn">Expand all pages</button>
+        <span id="reader-status" class="reader-status" aria-live="polite"></span>
+      </div>
+      <div id="reader-pages" class="reader-pages"></div>
     </section>
     <section class="panel" id="changes" role="tabpanel" aria-labelledby="tab-changes" hidden>
       <div class="panel-head"><h2>What changed in 2026</h2><p>The big shifts from “A Balanced Perspective” to “A Call for AI Literacy.”</p></div>
@@ -77,5 +101,6 @@
 
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script src="reader.js"></script>
 </body>
 </html>

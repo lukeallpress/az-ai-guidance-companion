@@ -7,8 +7,10 @@
   function $(s, r) { return (r || document).querySelector(s); }
   function $all(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function firstPage(s) { var m = String(s).match(/\d+/); return m ? +m[0] : 1; }
   function pill(pages) {
-    return '<a class="pagepill" href="' + PDF + '" target="_blank" rel="noopener" title="Open the guidance (p. ' + esc(pages) + ')">' + esc(pages) + '</a>';
+    return '<button type="button" class="pagepill" data-page="' + firstPage(pages) +
+      '" title="Read this in the guidance (p. ' + esc(pages) + ')">' + esc(pages) + '</button>';
   }
 
   // compact chrome automatically when embedded in an iframe (e.g. Google Sites)
@@ -44,6 +46,7 @@
   }
   function renderRole(id) {
     var r = D.roles.filter(function (x) { return x.id === id; })[0] || D.roles[0];
+    window.AZ_activeRole = r.id;
     renderRoleMenu(r.id);
     roledetail.innerHTML =
       '<div class="role-banner"><div class="dots"></div>' +

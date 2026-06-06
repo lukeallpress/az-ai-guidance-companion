@@ -9,8 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Vollkorn:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>try{if(sessionStorage.getItem('az_unlocked_v1')==='1'){document.documentElement.classList.add('unlocked');}}catch(e){}</script>
 </head>
 <body>
+  <!-- ===================== ACCESS GATE ===================== -->
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <img src="assets/aiee-mark.png" alt="">
+      <h2>Working draft</h2>
+      <p>This companion references an unpublished draft of the guidance. Enter the access word to continue.</p>
+      <form id="gate-form" autocomplete="off">
+        <input id="gate-pw" type="password" autocomplete="off" placeholder="Access word" aria-label="Access word">
+        <button class="btn btn--gold" type="submit">Enter</button>
+      </form>
+      <p class="gate-err" id="gate-err" hidden>That word didn’t work — try again.</p>
+      <p class="gate-note">Shared in confidence — please don’t forward the link.</p>
+    </div>
+  </div>
+
   <!-- ===================== HERO ===================== -->
   <header class="hero">
     <img class="hero__bg" src="assets/arizona-constellation.svg" alt="">
@@ -33,7 +49,7 @@
             page-numbered reading route — or scan what changed since the last edition.</p>
           <div class="hero-actions">
             <button class="btn btn--gold" data-go="routes">Find your reading route</button>
-            <a class="btn btn--ghost" id="open-guidance" href="#" target="_blank" rel="noopener">Open the full guidance ↗</a>
+            <button class="btn btn--ghost" data-go="read">Read the guidance</button>
           </div>
         </div>
         <div class="stats" id="stats" aria-label="At a glance"></div>
@@ -46,6 +62,7 @@
     <div class="nav__inner">
       <div class="tabs" role="tablist" aria-label="Companion modes">
         <button class="tab" role="tab" id="tab-routes"  aria-controls="routes"  data-tab="routes"  aria-selected="true">Reading routes</button>
+        <button class="tab" role="tab" id="tab-read"    aria-controls="read"    data-tab="read"    aria-selected="false">Read the guidance</button>
         <button class="tab" role="tab" id="tab-changes" aria-controls="changes" data-tab="changes" aria-selected="false">What changed</button>
         <button class="tab" role="tab" id="tab-explore" aria-controls="explore" data-tab="explore" aria-selected="false">Explore sections</button>
         <button class="tab" role="tab" id="tab-share"   aria-controls="share"   data-tab="share"   aria-selected="false">Share kit</button>
@@ -69,6 +86,22 @@
         <div class="rolemenu" id="rolemenu" role="tablist" aria-label="Roles"></div>
         <div class="roledetail" id="roledetail" aria-live="polite"></div>
       </div>
+    </section>
+
+    <!-- READ THE GUIDANCE -->
+    <section class="panel" id="read" role="tabpanel" aria-labelledby="tab-read" hidden>
+      <div class="panel-head">
+        <h2>Read the guidance</h2>
+        <p>Your role’s recommended pages are open; the rest are collapsed — tap any “Show pages” strip to expand them. Page links across this site jump you straight here.</p>
+      </div>
+      <div class="reader-toolbar">
+        <label class="reader-rolepick">Reading as
+          <select id="reader-role" aria-label="Role for recommended pages"></select>
+        </label>
+        <button type="button" id="reader-expand" class="mini-btn">Expand all pages</button>
+        <span id="reader-status" class="reader-status" aria-live="polite"></span>
+      </div>
+      <div id="reader-pages" class="reader-pages"></div>
     </section>
 
     <!-- WHAT CHANGED -->
@@ -111,5 +144,6 @@
 
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script src="reader.js"></script>
 </body>
 </html>
