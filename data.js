@@ -33,15 +33,15 @@ window.AZ_DATA = {
     // NOTE: these are innocuous SAMPLE clips so the player design shows in the demo —
     // replace each with the real role overview, and clear mediaDemoNote, when ready.
     mediaPlaceholder: true,
-    mediaDemoNote: "Sample clip for layout — the real role overview will go here.",
+    mediaDemoNote: "Sample overview — each role will get its own final version.",
     media: {
-      superintendent: { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "5" },
-      curriculum:     { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "6" },
-      edtech:         { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "6" },
-      it:             { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "5" },
-      principal:      { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "5" },
-      operations:     { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "4" },
-      teachers:       { videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", podcastUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", min: "5" }
+      superintendent: { videoUrl: "assets/media/overview-superintendent.mp4", podcastUrl: "assets/media/overview-superintendent.m4a", min: "5" },
+      curriculum:     { videoUrl: "assets/media/overview-superintendent.mp4", podcastUrl: "assets/media/overview-superintendent.m4a", min: "6" },
+      edtech:         { videoUrl: "assets/media/overview-superintendent.mp4", podcastUrl: "assets/media/overview-superintendent.m4a", min: "6" },
+      it:             { videoUrl: "assets/media/overview-superintendent.mp4", podcastUrl: "assets/media/overview-superintendent.m4a", min: "5" },
+      principal:      { videoUrl: "assets/media/overview-superintendent.mp4", podcastUrl: "assets/media/overview-superintendent.m4a", min: "5" },
+      operations:     { videoUrl: "assets/media/overview-superintendent.mp4", podcastUrl: "assets/media/overview-superintendent.m4a", min: "4" },
+      teachers:       { videoUrl: "assets/media/overview-superintendent.mp4", podcastUrl: "assets/media/overview-superintendent.m4a", min: "5" }
     },
     // Optional usage analytics (Supabase). Fill both to enable; blank = disabled (no-op).
     analytics: { supabaseUrl: "", supabaseAnonKey: "", table: "events" }
