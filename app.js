@@ -23,8 +23,8 @@
         '-min video &amp; podcast overview for this role is coming soon — for now, the page-numbered route below is the fast path.</div>';
     }
     var h = '<div class="media-block"><div class="media-head"><b>Short on time?</b> Watch or listen instead of reading.</div><div class="media-btns">';
-    if (hasV) h += '<button type="button" class="media-btn" data-media="video" data-role="' + r.id + '">▶ Watch overview' + (m.min ? " · " + esc(m.min) + " min" : "") + "</button>";
-    if (hasP) h += '<button type="button" class="media-btn" data-media="podcast" data-role="' + r.id + '">🎧 Listen' + (m.min ? " · " + esc(m.min) + " min" : "") + "</button>";
+    if (hasV) h += '<button type="button" class="media-btn" data-media="video" data-role="' + r.id + '">▶ Watch overview<span class="media-dur">' + (isDirectMedia(m.videoUrl) ? "" : (m.min ? " · " + esc(m.min) + " min" : "")) + "</span></button>";
+    if (hasP) h += '<button type="button" class="media-btn" data-media="podcast" data-role="' + r.id + '">🎧 Listen<span class="media-dur">' + (isDirectMedia(m.podcastUrl) ? "" : (m.min ? " · " + esc(m.min) + " min" : "")) + "</span></button>";
     var note = D.meta.mediaDemoNote ? '<div class="media-note">' + esc(D.meta.mediaDemoNote) + '</div>' : '';
     return h + '</div>' + note + '<div class="media-embed" id="media-embed-' + r.id + '" hidden></div></div>';
   }
@@ -37,6 +37,27 @@
     if (/\.(mp3|m4a|aac|wav|ogg)(\?|$)/i.test(u)) return '<audio controls preload="none" style="width:100%" src="' + esc(u) + '"></audio>';
     if (/\.(mp4|webm|mov)(\?|$)/i.test(u)) return '<video controls preload="none" style="width:100%" src="' + esc(u) + '"></video>';
     return '<iframe class="embed-frame" src="' + esc(u) + '" title="Overview" allowfullscreen></iframe>';
+  }
+  // Real media length, read from the file's metadata and shown next to Watch/Listen.
+  function isDirectMedia(u) { return /\.(mp4|webm|mov|mp3|m4a|aac|wav|ogg)(\?|$)/i.test(String(u || "")); }
+  function fmtDur(s) { s = Math.round(s); if (!s || !isFinite(s) || s <= 0) return ""; var m = Math.floor(s / 60), x = s % 60; return m + ":" + (x < 10 ? "0" : "") + x; }
+  var DUR_CACHE = {};
+  function setDur(role, type, secs) {
+    var span = document.querySelector('.media-btn[data-media="' + type + '"][data-role="' + role + '"] .media-dur');
+    if (span) { var t = fmtDur(secs); span.textContent = t ? " · " + t : ""; }
+  }
+  function probeMediaDurations(r) {
+    var m = (D.meta.media && D.meta.media[r.id]) || {};
+    [["video", m.videoUrl], ["podcast", m.podcastUrl]].forEach(function (p) {
+      var type = p[0], url = p[1];
+      if (!url || !isDirectMedia(url)) return; // YouTube/Drive iframes keep the listed estimate
+      if (DUR_CACHE[url] != null) { setDur(r.id, type, DUR_CACHE[url]); return; }
+      var isAudio = /\.(mp3|m4a|aac|wav|ogg)(\?|$)/i.test(url);
+      var el = document.createElement(isAudio ? "audio" : "video");
+      el.preload = "metadata"; el.muted = true;
+      el.addEventListener("loadedmetadata", function () { DUR_CACHE[url] = el.duration; setDur(r.id, type, el.duration); });
+      el.src = url;
+    });
   }
 
   // compact chrome automatically when embedded in an iframe (e.g. Google Sites)
@@ -91,6 +112,7 @@
           '<button class="copybtn" data-copy="teaser-' + r.id + '">Copy teaser</button>' +
           '<textarea id="teaser-' + r.id + '" class="hidden" aria-hidden="true">' + esc(r.teaser) + '</textarea></div>' +
       '</div>';
+    probeMediaDurations(r);
   }
   rolemenu.addEventListener('click', function (e) {
     var b = e.target.closest('[data-role]'); if (!b) return;
