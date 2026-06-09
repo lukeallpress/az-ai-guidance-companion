@@ -122,29 +122,6 @@
     window.AZtrack && window.AZtrack('role', { role: id });
   });
 
-  /* ---------------- WHAT CHANGED ---------------- */
-  var changeFilters = $('#changefilters'), changeGrid = $('#changegrid'), activeTag = 'all';
-  function renderChangeFilters() {
-    var tags = ['all'].concat(D.changeTags);
-    changeFilters.innerHTML = tags.map(function (t) {
-      return '<button class="fchip" data-tag="' + esc(t) + '" aria-pressed="' + (t === activeTag) + '">' + (t === 'all' ? 'All changes' : esc(t)) + '</button>';
-    }).join('') + '<span class="count" id="changecount"></span>';
-  }
-  function renderChanges() {
-    var list = D.changes.filter(function (c) { return activeTag === 'all' || c.tag === activeTag; });
-    changeGrid.innerHTML = list.map(function (c) {
-      return '<article class="change"><div class="change__side"><span class="badge badge--tag">' + esc(c.tag) + '</span>' + pill(c.pages) + '</div>' +
-        '<div><h3>' + esc(c.title) + '</h3><p>' + esc(c.body) + '</p><p class="why"><b>Why it matters:</b> ' + esc(c.why) + '</p></div></article>';
-    }).join('') || '<div class="empty">No changes match that filter.</div>';
-    $('#changecount').textContent = list.length + ' of ' + D.changes.length;
-  }
-  changeFilters.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-tag]'); if (!b) return;
-    activeTag = b.getAttribute('data-tag');
-    $all('.fchip', changeFilters).forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-    renderChanges();
-  });
-
   /* ---------------- EXPLORE SECTIONS ---------------- */
   var exploreList = $('#explorelist');
   function chapterOrder() {
@@ -227,7 +204,7 @@
   });
 
   /* ---------------- INIT ---------------- */
-  renderChangeFilters(); renderChanges(); renderExplore('');
+  renderExplore('');
   var role = (/role=([\w-]+)/.exec(location.hash) || [])[1];
   var tab = (/tab=([\w-]+)/.exec(location.hash) || [])[1];
   renderRole(role || D.roles[0].id);

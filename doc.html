@@ -6,8 +6,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="180x180" href="assets/favicon.png?v=2">
   <link rel="apple-touch-icon" href="assets/favicon.png?v=2">
-  <title>AZ GenAI Guidance 2026 — What Changed & Reading Routes (one-pager)</title>
-  <meta name="description" content="A printable companion to Arizona's 2026 GenAI K-12 guidance: what changed, plus role-based reading routes with page numbers.">
+  <title>AZ GenAI Guidance 2026 — Reading Routes (one-pager)</title>
+  <meta name="description" content="A printable companion to Arizona's 2026 GenAI K-12 guidance: what's new, plus prioritized role reading routes with page numbers.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Vollkorn:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -78,21 +78,20 @@
       <h1>Generative AI in K-12 Education</h1>
       <p class="sub">Guidance for Arizona Schools and School Systems</p>
       <p class="tag">A Call for AI Literacy</p>
-      <p class="what">A companion one-pager: <b>what changed</b> in the 2026 rewrite, plus a <b>role-based reading route</b> for each leader. Page numbers reference v26.01 — read the full document at <a id="cover-link" href="#" target="_blank" rel="noopener">azk12.ai</a>.</p>
+      <p class="what">A companion to the guidance: a short note on <b>what’s new in 2026</b>, plus a <b>prioritized reading route</b> for each role. Page numbers reference v26.01 — read the full document at <a id="cover-link" href="#" target="_blank" rel="noopener">azk12.ai</a>.</p>
     </header>
 
     <div class="doc-body">
       <section class="doc-section">
-        <h2>What changed in 2026</h2>
+        <h2>What’s new in 2026 — and why</h2>
         <div class="rule"></div>
-        <p class="lead">From “A Balanced Perspective” to “A Call for AI Literacy” — the ten shifts that matter most.</p>
-        <div class="changes2" id="d-changes"></div>
+        <p>Version 26.01 is a <b>full rewrite</b>, reframed from “A Balanced Perspective” to <b>“A Call for AI Literacy.”</b> We revise this guidance as the technology and the research evolve, so it stays current and grounded in what Arizona educators and students are actually experiencing. This edition centers AI literacy and human agency, expands the ethical considerations, and points teaching toward redesign rather than restriction. If you read an earlier version, this one is worth a fresh look; if you’re new to it, start with your role’s priority pages below — and plan to read the whole thing over time.</p>
       </section>
 
       <section class="doc-section doc-section--routes">
         <h2>Your reading route, by role</h2>
         <div class="rule"></div>
-        <p class="lead">Everyone starts the same place — Introduction (p. 6) and Understanding GenAI (pp. 8–9) — then follows their route.</p>
+        <p class="lead">These are priorities, not limits — everyone is encouraged to read the whole guidance. Start with Introduction (p. 6) and Understanding GenAI (pp. 8–9), then your role’s priority pages, then the rest.</p>
         <div id="d-roles"></div>
       </section>
     </div>
@@ -109,13 +108,6 @@
       var D = window.AZ_DATA, PDF = D.meta.pdfUrl;
       function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
       document.getElementById('cover-link').href = PDF;
-
-      document.getElementById('d-changes').innerHTML = D.changes.map(function(c){
-        return '<div class="c2"><div class="meta"><span class="badge badge--tag">'+esc(c.tag)+'</span>'+
-          '<a class="pagepill" href="'+PDF+'" target="_blank" rel="noopener">'+esc(c.pages)+'</a></div>'+
-          '<h3>'+esc(c.title)+'</h3><p>'+esc(c.body)+'</p>'+
-          '<p class="why"><b>Why:</b> '+esc(c.why)+'</p></div>';
-      }).join('');
 
       function steps(items){ return '<ul>'+items.map(function(it){
         return '<li><span>'+esc(it.label)+'</span><span class="pp">p. '+esc(it.pages)+'</span></li>'; }).join('')+'</ul>'; }

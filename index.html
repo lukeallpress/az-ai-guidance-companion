@@ -7,29 +7,13 @@
   <link rel="icon" type="image/png" sizes="180x180" href="assets/favicon.png?v=2">
   <link rel="apple-touch-icon" href="assets/favicon.png?v=2">
   <title>AZ GenAI Guidance 2026 — What Changed & Your Reading Route</title>
-  <meta name="description" content="A 5-minute companion to Arizona's 2026 GenAI K-12 guidance: pick your role for a short, page-numbered reading route, or see what changed.">
+  <meta name="description" content="A companion to Arizona's 2026 GenAI K-12 guidance: pick your role for a prioritized, page-numbered reading route into the full document.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Vollkorn:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script>try{if(sessionStorage.getItem('az_unlocked_v1')==='1'){document.documentElement.classList.add('unlocked');}}catch(e){}</script>
 </head>
 <body>
-  <!-- ===================== ACCESS GATE ===================== -->
-  <div class="gate" id="gate">
-    <div class="gate-card">
-      <img src="assets/aiee-mark.png" alt="">
-      <h2>Working draft</h2>
-      <p>This companion references an unpublished draft of the guidance. Enter the access word to continue.</p>
-      <form id="gate-form" autocomplete="off">
-        <input id="gate-pw" type="password" autocomplete="off" placeholder="Access word" aria-label="Access word">
-        <button class="btn btn--gold" type="submit">Enter</button>
-      </form>
-      <p class="gate-err" id="gate-err" hidden>That word didn’t work — try again.</p>
-      <p class="gate-note">Shared in confidence — please don’t forward the link.</p>
-    </div>
-  </div>
-
   <!-- ===================== HERO ===================== -->
   <header class="hero">
     <img class="hero__bg" src="assets/arizona-constellation.svg" alt="">
@@ -48,8 +32,8 @@
           <h1>Generative AI in K-12 Education</h1>
           <p class="subtitle">Guidance for Arizona Schools and School Systems</p>
           <p class="tagline">A Call for AI Literacy</p>
-          <p class="lede">No one needs to read 41 pages cover to cover. Pick your role for a short,
-            page-numbered reading route — or scan what changed since the last edition.</p>
+          <p class="lede">No one needs to read all 41 pages at once. Pick your role to see what to
+            read first — then work through the rest. It’s all worth your time.</p>
           <div class="hero-actions">
             <button class="btn btn--gold" data-go="routes">Find your reading route</button>
             <button class="btn btn--ghost" data-go="read">Read the guidance</button>
@@ -66,7 +50,6 @@
       <div class="tabs" role="tablist" aria-label="Companion modes">
         <button class="tab" role="tab" id="tab-routes"  aria-controls="routes"  data-tab="routes"  aria-selected="true">Reading routes</button>
         <button class="tab" role="tab" id="tab-read"    aria-controls="read"    data-tab="read"    aria-selected="false">Read the guidance</button>
-        <button class="tab" role="tab" id="tab-changes" aria-controls="changes" data-tab="changes" aria-selected="false">What changed</button>
         <button class="tab" role="tab" id="tab-explore" aria-controls="explore" data-tab="explore" aria-selected="false">Explore sections</button>
         <button class="tab" role="tab" id="tab-share"   aria-controls="share"   data-tab="share"   aria-selected="false">Share kit</button>
       </div>
@@ -82,7 +65,7 @@
     <section class="panel is-active" id="routes" role="tabpanel" aria-labelledby="tab-routes">
       <div class="panel-head">
         <h2>Your role, your reading route</h2>
-        <p>Choose a role to get a short “read first / read next” list with page numbers. Everyone starts in the same place.</p>
+        <p>Choose a role for a prioritized reading order — what to read first, then next. These are priorities to get you in; the whole guidance is worth reading.</p>
       </div>
       <div class="starthere" id="starthere"></div>
       <div class="routes">
@@ -95,26 +78,16 @@
     <section class="panel" id="read" role="tabpanel" aria-labelledby="tab-read" hidden>
       <div class="panel-head">
         <h2>Read the guidance</h2>
-        <p>Your role’s recommended pages are open; the rest are collapsed — tap any “Show pages” strip to expand them. Page links across this site jump you straight here.</p>
+        <p>Your role’s priority pages open first; the rest of the guidance is below — expand it as you go. It’s all worth reading. Page links across the site jump you here.</p>
       </div>
       <div class="reader-toolbar">
         <label class="reader-rolepick">Reading as
           <select id="reader-role" aria-label="Role for recommended pages"></select>
         </label>
-        <button type="button" id="reader-expand" class="mini-btn">Expand all pages</button>
+        <button type="button" id="reader-expand" class="mini-btn">Read the whole guidance</button>
         <span id="reader-status" class="reader-status" aria-live="polite"></span>
       </div>
       <div id="reader-pages" class="reader-pages"></div>
-    </section>
-
-    <!-- WHAT CHANGED -->
-    <section class="panel" id="changes" role="tabpanel" aria-labelledby="tab-changes" hidden>
-      <div class="panel-head">
-        <h2>What changed in 2026</h2>
-        <p>The big shifts from “A Balanced Perspective” to “A Call for AI Literacy.” Filter by theme.</p>
-      </div>
-      <div class="filterbar" id="changefilters"></div>
-      <div class="change-grid" id="changegrid"></div>
     </section>
 
     <!-- EXPLORE SECTIONS -->
