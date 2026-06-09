@@ -1,35 +1,25 @@
 # AZ GenAI Guidance — 2026 Companion
 
 A lightweight companion to Arizona's **2026 GenAI K-12 guidance (v26.01, "A Call for AI Literacy")**.
-It helps busy education leaders by answering two questions fast:
-
-1. **What changed** in the 2026 rewrite?
-2. **What should *I* read?** — a short, page-numbered reading route for each role.
+It helps busy education leaders answer one question fast: **where do I start?** Each role gets a
+prioritized, page-numbered reading route into the full guidance — and everyone is encouraged to read
+the whole thing over time.
 
 Two deliverables, one shared design and dataset:
 
 | File | What it is |
 |---|---|
-| `index.html` | The **website** — a full navigator: Reading routes · What changed · Explore sections · Share kit |
+| `index.html` | The **website** — a navigator: Reading routes · Read the guidance · Explore sections · Share kit |
 | `embed.html` | A **compact build for embedding** in Google Sites (no big hero, non-sticky nav) |
-| `doc.html` | The **document** — a printable one-pager: what changed + every role's reading route |
+| `doc.html` | The **document** — a printable one-pager: what's new + every role's reading route |
 | `doc.pdf` | A print-rendered PDF of `doc.html` |
 | `embed-harness.html` | A local preview showing how `embed.html` looks framed inside Google Sites |
 
-## Built-in reader & access word
-The **Read the guidance** tab shows the document itself, page by page, with each role's
-recommended pages open and the rest collapsed into expandable strips. Every page link on the
-site jumps straight to the right page.
-
-Because the draft isn't public yet, the site is gated by an **access word** and the document is
-genuinely protected, not just hidden:
-- Pages are pre-rendered images, **AES-256-GCM encrypted** (`assets/pages/pNN.enc`, shared salt in
-  `assets/pages/salt.bin`). The access word derives the key (PBKDF2-SHA256) and decrypts them in the
-  browser. Without it the files are unreadable — even though the repo is public.
-- Current access word: **`Institute`** (case-insensitive). To change it, re-run the page-encryption
-  step with a new word (see `scripts` note in `DEPLOYMENT-AND-EMBED.md`) and redeploy.
-- This stops casual/accidental access. A short dictionary word is brute-forceable by someone
-  determined — use a longer passphrase if you need more.
+## Built-in reader
+The **Read the guidance** tab shows the document itself, page by page (pre-rendered images in
+`assets/pages/`). Each role's **priority pages open first**; the rest of the guidance is one tap
+away — everything is worth reading. Every page link on the site jumps straight to the right page.
+The guidance is public, so there is no access gate.
 
 ## Source of truth & accuracy
 - **Page numbers and chapter titles** come from **v26.01** (verified against the PDF's Table of Contents).
